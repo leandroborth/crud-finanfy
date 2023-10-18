@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Laboratório Javascript</title>
+  <script>
+  // Texto no formato JSON
+  var textoJSON = '{ "contatos": [
+                       { "nome": "Antônio dos Anjos",
+                         "email": "antonio(abc.com.br",
+                         "telefone": "031-98232-4455"
+                       },
+                       { "nome": "Carlos Amaral",
+                         "email": "carlosOxyz.com.br",
+                         "telefone": "031-97628-3349"
+                       }
+                     ]
+                   }';
+
+  // converte JSON em Objeto Javascript agenda
+  var agenda = JSON.parse (textoJSON);
+
+  function procContatos () {
+    lista = "";
+    for (let i = 0; i < agenda.contatos.length; i++) {
+      lista += agenda.contatos[i].nome + " - " +
+          agenda.contatos[i].email + " - " +
+          agenda.contatos[i].telefone + "<br>";
+   }
+   document.getElementById('saida_contatos').innerHTML = lista;
+}
+
+  function printJSON () {
+    document.getElementById('saida_json').innerHTML =
+       JSON.stringify(agenda,null,2);
+  }
+
+ </script>
+</head>
+
+<body>
+    <h1>Saída Processada</h1>
+    <button type="button" onclick="procContatos ();">
+        Processa Lista de Contatos</button>
+    <div id="saida_contatos"></div>
+
+    <h1>Saída JSON</h1>
+    <button type="button" onClick="printJSON ();">
+        Imprime Objeto JSON</button>
+    <pre id="saida_json"><pre>
+</body>
+
+</html>
